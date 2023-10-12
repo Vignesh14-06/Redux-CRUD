@@ -24,7 +24,10 @@ const Form = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     setInputError(errorValidate(input));
-    dispatch(addUser.addUser(input));
+    if(input.username && input.password !== '' && regex.test(input.email)){
+      dispatch(addUser.addUser(input));
+    }
+
   //  window.location.replace('https://www.facebook.com/');
   // navigate("https://www.facebook.com")
     setInput({
@@ -35,10 +38,10 @@ const Form = () => {
       // cpassword:""
     });
   };
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
   const errorValidate = (values) => {
     let errors = {};
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.username) {
       errors.username = "Username is mandatory . please enter your name";
     }

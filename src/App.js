@@ -16,7 +16,6 @@ function App() {
   const users = useSelector((state) => {
     return state.users;
   });
-  console.log(users,"users")
   const dispatch = useDispatch();
 
 
